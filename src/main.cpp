@@ -2,19 +2,23 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 
-int run_tests(char* argc, char* argv[])
+int run_tests(int argc, char* argv[])
 {
+   ::testing::GTEST_FLAG(throw_on_failure) = true;
+   ::testing::InitGoogleMock(&argc, argv);
+
+   return Catch::Session().run( argc, argv );
 
 }
 
-int run_app(char* argc, char* argv[])
+int run_app(int argc, char* argv[])
 {
-
+   return 0;
 }
 
-int main (char* argc, char* argv[])
+int main (int argc, char* argv[])
 {
    int result = 0;
 
@@ -24,7 +28,7 @@ int main (char* argc, char* argv[])
    }
    else
    {
-      result = run_app(arc, argv);
+      result = run_app(argc, argv);
    }
 
    return result;
