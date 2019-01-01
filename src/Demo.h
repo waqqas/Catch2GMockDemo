@@ -2,5 +2,6 @@
 
 class Demo
 {
-   Demo();
+   public: 
+      Demo();
 };

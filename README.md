@@ -1,4 +1,4 @@
-#Introduction
+Introduction
 ===
 
 This is demo app to integrate Catch2 with GMock
@@ -18,6 +18,7 @@ OR
 Building
 ===
 
+- cd Catch2GMockDemo
 - mkdir build
 - cd build
 - cmake ..
