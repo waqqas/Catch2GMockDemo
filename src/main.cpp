@@ -1,20 +1,26 @@
-#include "Demo.h"
+#include "FileWriter.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <catch2/catch.hpp>
+
 
 int run_tests(int argc, char* argv[])
 {
    ::testing::GTEST_FLAG(throw_on_failure) = true;
    ::testing::InitGoogleMock(&argc, argv);
 
-   return Catch::Session().run( argc, argv );
+   return Catch::Session().run(argc, argv);
 
 }
 
 int run_app(int argc, char* argv[])
 {
+   FileWriter writer;
+
+   writer.Open("output.txt");
+   writer.Write("hello world");
+   writer.Close();
    return 0;
 }
 

@@ -1,9 +1,9 @@
 #include <catch2/catch.hpp>
-#include "Demo.h"
+#include "FileWriter.h"
 
 TEST_CASE("Mock Tests:", "[mock]")
 {
-   Demo demo;
+   FileWriter writer;
 
    SECTION(""){
       
