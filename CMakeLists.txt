@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories("${CMAKE_SOURCE_DIR}/src")
 include_directories("${CMAKE_SOURCE_DIR}/tests")        # for GMockCatchListener.h
 
-set(VENDOR_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
+set(VENDOR_SOURCE_DIR "${CMAKE_SOURCE_DIR}/vendor")
 
 ## google test/mock configuration
 add_subdirectory("${VENDOR_SOURCE_DIR}/googletest")
