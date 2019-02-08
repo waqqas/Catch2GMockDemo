@@ -8,9 +8,9 @@
 int run_tests(int argc, char* argv[])
 {
    ::testing::GTEST_FLAG(throw_on_failure) = true;
-   ::testing::InitGoogleMock(&argc, argv);
+   ::testing::InitGoogleMock(&argc, &argv[1]);
 
-   return Catch::Session().run(argc, argv);
+   return Catch::Session().run(argc, &argv[1]);
 
 }
 
@@ -28,9 +28,9 @@ int main (int argc, char* argv[])
 {
    int result = 0;
 
-   if(argc == 2 && strcmp(argv[1], "test")== 0)
+   if(argc >= 2 && strcmp(argv[1], "test")== 0)
    {
-      result = run_tests(argc, argv);
+      result = run_tests(--argc, argv);
    }
    else
    {
