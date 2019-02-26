@@ -13,6 +13,9 @@ add_subdirectory("${VENDOR_SOURCE_DIR}/googletest")
 include_directories("${VENDOR_SOURCE_DIR}/googletest/googletest/include")
 include_directories("${VENDOR_SOURCE_DIR}/googletest/googlemock/include")
 
+add_subdirectory("${VENDOR_SOURCE_DIR}/spdlog")
+include_directories("${VENDOR_SOURCE_DIR}/spdlog/include")
+
 ## catch2 configuation
 set_property(SOURCE src/main.cpp PROPERTY COMPILE_DEFINITIONS "CATCH_CONFIG_RUNNER")
 include_directories("${VENDOR_SOURCE_DIR}/Catch2/single_include")
