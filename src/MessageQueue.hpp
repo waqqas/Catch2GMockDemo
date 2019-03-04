@@ -36,8 +36,8 @@ class MessageQueue
    inline bool get_empty_packet(T *&element)
    {
       if(!is_full()){
-         std::atomic_thread_fence(std::memory_order_acquire);
          element = &data_[write_index_.load() % mask_];
+         std::atomic_thread_fence(std::memory_order_acquire);
 
          {
             std::stringstream stream;
@@ -50,7 +50,7 @@ class MessageQueue
       return false;
    }
 
-   inline bool put_filled_packet(T *element)
+   inline bool mark_as_filled(T *element)
    {
       (void)element;
 
@@ -58,7 +58,7 @@ class MessageQueue
          std::stringstream stream;
          stream << std::hex << element;
 
-         spdlog::info("Put-Filled at: {} seq-no: {}-{} {}", write_index_.load(), element->packet_seq_no, element->feed_type, stream.str());
+         spdlog::info("Mark-As-Filled at: {} seq-no: {}-{} {}", write_index_.load(), element->packet_seq_no, element->feed_type, stream.str());
       }   
 
       std::atomic_thread_fence(std::memory_order_release);
@@ -83,7 +83,7 @@ class MessageQueue
       return false;
    }
 
-   inline bool put_empty_packet(T *element)
+   inline bool mark_as_empty(T *element)
    {
       (void)element;
 
@@ -91,7 +91,7 @@ class MessageQueue
          std::stringstream stream;
          stream << std::hex << element;
 
-         spdlog::info("Put-Empty at: {} seq-no: {}-{} {}", read_index_.load(), element->packet_seq_no, element->feed_type, stream.str());
+         spdlog::info("Mark-As-Empty at: {} seq-no: {}-{} {}", read_index_.load(), element->packet_seq_no, element->feed_type, stream.str());
       }  
 
       std::atomic_thread_fence(std::memory_order_release);

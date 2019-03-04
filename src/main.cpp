@@ -39,7 +39,7 @@ int run_app(int argc, char *argv[])
         packet->packet_seq_no = input++;
         packet->feed_type = "I";
 
-        queue.put_filled_packet(packet);
+        queue.mark_as_filled(packet);
       }
     }
   });
@@ -69,7 +69,7 @@ int run_app(int argc, char *argv[])
 
         previous = packet->packet_seq_no;
 
-        queue.put_empty_packet(packet);
+        queue.mark_as_empty(packet);
       }
     }
 
