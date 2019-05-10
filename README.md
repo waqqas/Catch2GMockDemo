@@ -13,7 +13,7 @@ Downloading
 - git clone --recurse-submodules https://github.com/waqqas/Catch2GMockDemo
 OR
 - git clone https://github.com/waqqas/Catch2GMockDemo
-- git submodule update --remote
+- git submodule update --remote --init
 
 Building
 ===
